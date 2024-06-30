@@ -1,0 +1,44 @@
+{
+   "action": {
+      "default_icon": "icon-tweak-start.png",
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "service-worker.bundle.js"
+   },
+   "commands": {
+      "_execute_action": {
+         "description": "Opens the extension popup.",
+         "suggested_key": {
+            "default": "Ctrl+Shift+Period"
+         }
+      },
+      "toggle-tweak-enabled-state": {
+         "description": "Runs/Stops the tweak browser extension.",
+         "suggested_key": {
+            "default": "Ctrl+Shift+Comma"
+         }
+      }
+   },
+   "content_security_policy": {
+      "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+   },
+   "description": "Mock or modify your HTTP requests to test, develop and demo your web application",
+   "host_permissions": [ "http://*/*", "https://*/*" ],
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAio97tFZgOprsUsJXvh8sYcUvNzpmDfGGugklp91NorLSSUE+G7WrAnsH7mCuSj7/W8c9UI3Ma+eGeHpfG61HDEV4dLRXLuCGdz7Zjrv3b9Zema+jSEMHyeN74QDRf4Tq6+uMLq6K535Mfr447rXR1F++NWNdyVO4S7QEh6Qa6cJGnKDuNw5vrtviOsbD/G1Dl9M1zBDfSSQ2BMCKSk+VyErwtZTMZIr0vR3ulJkwk5UwjJp1SuyHPXh3oO+PN6i7NWgA7Vgi6KyoWUAdtpmpBBFXOBGcfRfcxYbEjXVcb1DOildFpzaVY39+wbRqqbSeL9twlewkXes+PUGNIHXO1wIDAQAB",
+   "manifest_version": 3,
+   "name": "tweak: mock and modify HTTP requests",
+   "permissions": [ "storage", "unlimitedStorage", "scripting" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "8.3.0",
+   "web_accessible_resources": [ {
+      "matches": [ "http://*/*", "https://*/*" ],
+      "resources": [ "intercept.bundle.js" ]
+   } ]
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>tweak: mock API response, modify HTTP requests</title>
+  <link rel="stylesheet" href="popup.css" />
+  <link rel="stylesheet" href="tweak-smui-light.css" media="(prefers-color-scheme: light)" />
+  <link rel="stylesheet" href="tweak-smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
+  <script defer src="popup.bundle.js"></script>
+</head>
+<style>
+  :root {
+    --popup-width: 800px;
+    --popup-height: 568px;
+    --top-bar-height: 48px;
+    --collections-nav-bar-height: 28px;
+    --config-panel-height: calc(var(--popup-height) - var(--top-bar-height) - var(--collections-nav-bar-height) - 8px);
+    --left-side-panel-width: 320px;
+    --z-stack-toolbar: 100;
+    --z-stack-left-side-menu: 2147483641;
+    --z-stack-overlay: 101;
+    /* 2147483646 because snackbar is 2147483647 the max allowed*/
+    --z-stack-max: 2147483647;
+    --z-stack-row-rgx: 10;
+    /* --z-stack-row-rgx + 1 */
+    --z-stack-collection-tabs-surface-menu: 11;
+    --z-stack-dnd-not-dragged-item: 10;
+    --z-stack-tooltip: 2147483647;
+    --z-stack-loading-container: 102;
+    /* .monaco-editor .find-widget the "find field" has value 35 */
+    --z-stack-autocomplete-menu: 36;
+    --z-stack-collection-tab-x-icon: 9;
+  }
+
+  html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: system-ui, sans-serif;
+  }
+
+  body:not(.user-is-tabbing) button:focus,
+  body:not(.user-is-tabbing) input:focus,
+  body:not(.user-is-tabbing) select:focus,
+  body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
+  }
+
+  summary {
+    outline: none;
+  }
+
+  textarea {
+    font-size: 12px !important;
+    line-height: 16px !important;
+    resize: none !important;
+  }
+
+  .mdc-snackbar {
+    justify-content: flex-start !important;
+    z-index: var(--z-stack-max) !important;
+  }
+
+  .tweak-apply-main-theme-color {
+    color: rgb(var(--tweak-theme-primary)) !important;
+  }
+
+  /* Firefox: Override font for select fields selected text */
+  @-moz-document url-prefix() {
+    :root {
+      /* FIXME: -28px because in Firefox the popup is smaller making the whole UI overflow
+      this is a quick hack to get v6.0.0 out of the door */
+      --config-panel-height: calc(var(--popup-height) - var(--top-bar-height) - 28px);
+    }
+
+    .mdc-select__selected-text {
+      padding-left: 2px !important;
+    }
+
+    /* FIXME: required to align badge vertically, styles for badge need refactoring */
+    .row__method-badge--hack-firefox {
+      margin-top: 22px !important;
+    }
+
+    /* FIXME: required to align the regex button with the url text field after updating to SMUI V4 */
+    .row__url-rgx--hack-firefox {
+      margin-top: -32px !important;
+    }
+
+    /* FIXME: scrollbars are broken in firefox so we remove them */
+    html {
+      scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+      height: 0px;
+      width: 0px;
+      background: transparent;
+      border: none;
+    }
+  }
+</style>
+
+<body>
+</body>
+
+</html>
