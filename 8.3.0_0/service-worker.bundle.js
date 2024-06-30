@@ -777,7 +777,7 @@ console.log("Tweak Mod Loaded!");
         Z = new Map(V.map(({ code: e, text: t }) => [e, t])),
         ee = [{ id: $(), header: "Content-Type", value: Y, active: !0 }],
         te = new RegExp("[a-zA-Z][a-zA-Z_0-9]*", "g"),
-        oe = { free: F.Types.Plan.Free, premium: F.Types.Plan.Premium }, // free = x0 | premium = x1
+        oe = { free: F.Types.Plan.Premium, premium: F.Types.Plan.Premium }, // free = x0 | premium = x1
         ne = [F.Types.PlanStatus.Trialing, F.Types.PlanStatus.Active];
       let ae = "https://tweak-extension.com";
       const re = {

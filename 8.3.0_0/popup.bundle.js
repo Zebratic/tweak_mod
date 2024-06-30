@@ -9354,14 +9354,14 @@
           popupScrollPositionV2: {},
           isToolbarMoreOptionsMenuOpened: !1,
           theme: xi.THEMES.light,
-          plan: xi.PLANS.free,
+          plan: xi.PLANS.premium,
           page: xi.PAGES.main,
           variables: [],
           experiments: Object.keys(xi.EXPERIMENTS).reduce(
             (e, t) => ((e[t] = 0), e),
             {}
           ),
-          rulesLimit: xi.RULE_LIMITS.free,
+          rulesLimit: xi.RULE_LIMITS.premium,
           user: {
             cancelSubUrl: null,
             lastUpdatedTimestamp: -1,
@@ -9379,7 +9379,7 @@
           analyticsClientId: "",
           autoEnabledSites: [],
         },
-        ka = st(xi.PLANS.free);
+        ka = st(xi.PLANS.premium);
       let Pa = null;
       fr()
         .then((e) => {
@@ -37289,7 +37289,7 @@
                   (request_hook_plan_check = (function (user_data) {
                     try {
                       const { interceptionPolicy: t, plan: user_plan } = user_data;
-                      if (user_plan === xi.PLANS.free) return _b;
+                      // if (user_plan === xi.PLANS.free) return _b; // bypass paid tabs
                       switch (t) {
                         case xi.INTERCEPTION_POLICIES.MOCK.KEY:
                           return [
